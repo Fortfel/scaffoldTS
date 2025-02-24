@@ -20,7 +20,7 @@ import { BaseErrorOptions, Jsonable } from '@/_utility.types.ts'
  * window.addEventListener('resize', debouncedLog)
  * ```
  */
-function debounce<TParams extends (...args: Array<unknown>) => void>(
+export function debounce<TParams extends (...args: Array<unknown>) => void>(
   callback: TParams,
   wait: number,
   immediate = false,
@@ -61,10 +61,7 @@ function debounce<TParams extends (...args: Array<unknown>) => void>(
  * console.log(result); // Output: 'text-white bg-blue-500'
  * ```
  */
-function tw(
-  strings: ReadonlyArray<string> | ArrayLike<string>,
-  ...values: Array<unknown>
-): string {
+export function tw(strings: ReadonlyArray<string> | ArrayLike<string>, ...values: Array<unknown>): string {
   return String.raw({ raw: strings }, ...values)
 }
 
@@ -81,7 +78,7 @@ function tw(
  * consoleLogNode('Hello %s, the result is %d', 'world', 42)
  * ```
  */
-function consoleLogNode(...args: Array<unknown>): void {
+export function consoleLogNode(...args: Array<unknown>): void {
   process.stdout.write(util.format(...args) + '\n')
 }
 
@@ -93,10 +90,7 @@ function consoleLogNode(...args: Array<unknown>): void {
  * @returns The validated value if it is not `null`.
  * @throws Error - will throw an error with the provided message if the value is `null`.
  */
-function throwIfNull<TElementType>(
-  value: TElementType | null,
-  errorMessage: string,
-): TElementType {
+export function throwIfNull<TElementType>(value: TElementType | null, errorMessage: string): TElementType {
   if (value === null) {
     throw new Error(errorMessage)
   }
@@ -110,10 +104,8 @@ function throwIfNull<TElementType>(
  * @param object - The object whose properties to check.
  * @returns `true` if at least one property is empty, otherwise `false`.
  */
-function areObjectPropertiesEmpty(object: Record<string, unknown>): boolean {
-  return Object.values(object).some(
-    (value) => value === null || value === undefined || value === '',
-  )
+export function areObjectPropertiesEmpty(object: Record<string, unknown>): boolean {
+  return Object.values(object).some((value) => value === null || value === undefined || value === '')
 }
 
 /**
@@ -138,7 +130,7 @@ function areObjectPropertiesEmpty(object: Record<string, unknown>): boolean {
  * }
  * ```
  */
-function ensureError(value: unknown): Error {
+export function ensureError(value: unknown): Error {
   if (value instanceof Error) return value
 
   let stringified = '[Unable to stringify the thrown value]'
@@ -148,9 +140,7 @@ function ensureError(value: unknown): Error {
     /* empty */
   }
 
-  return new Error(
-    `This value was thrown as is, not through an Error: ${stringified}`,
-  )
+  return new Error(`This value was thrown as is, not through an Error: ${stringified}`)
 }
 
 /**
@@ -173,7 +163,7 @@ function ensureError(value: unknown): Error {
  * }
  * ```
  */
-class BaseError extends Error {
+export class BaseError extends Error {
   /**
    * Additional contextual information about the error.
    * This property is readonly and can be serialized to JSON.
@@ -228,14 +218,4 @@ class BaseError extends Error {
 
     return serializedError
   }
-}
-
-export {
-  debounce,
-  tw,
-  consoleLogNode,
-  throwIfNull,
-  areObjectPropertiesEmpty,
-  ensureError,
-  BaseError,
 }
