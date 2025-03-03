@@ -1,5 +1,5 @@
 import '@/style/tailwind.css'
-import { tw } from '@/_utility'
+import { throwIfNull, tw } from '@/_utility'
 
 //TODO[fortf] README
 
@@ -56,8 +56,7 @@ class App {
    * @returns An object containing references to DOM elements.
    */
   private initDomRefs(): DOMReferences {
-    const app = document.querySelector<HTMLElement>('#app')
-    if (!app) throw new Error('App element not found')
+    const app = throwIfNull(document.querySelector<HTMLElement>('#app'), 'App element not found')
 
     return Object.freeze({
       app,
