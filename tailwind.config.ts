@@ -13,16 +13,17 @@ export default {
     // https://github.com/tailwindlabs/tailwindcss/discussions/8679     - put same styles in tailwind.css file as in this topic?
 
     require('@tailwindcss/typography'),
-    // require('@tailwindcss/forms'),
-    // require('@tailwindcss/aspect-ratio'),
-    // require('@tailwindcss/container-queries'),
-    // https://github.com/jamiebuilds/tailwindcss-animate/tree/main
-    require('./plugins/bg-stripes')({
-      // Optional configuration
-      size: '7.07px',
-      angle: '135deg',
-      opacity: 50,
-      bgOpacity: 10,
+    require('@tailwindcss/forms')({
+      // strategy: 'base', // only generate global styles
+      // strategy: 'class', // only generate classes
     }),
+    // https://github.com/jamiebuilds/tailwindcss-animate/tree/main
+    // require('./plugins/bg-stripes')({
+    //   // Optional configuration
+    //   size: '7.07px',
+    //   angle: '135deg',
+    //   opacity: 50,
+    //   bgOpacity: 10,
+    // }),
   ],
 } satisfies Config
