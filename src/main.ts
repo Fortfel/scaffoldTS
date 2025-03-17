@@ -1,5 +1,5 @@
 import '@/style/tailwind.css'
-import { throwIfNull, tw } from '@/_utility'
+import { throwIfNull } from '@/utils'
 
 //TODO[fortf] README
 
@@ -23,7 +23,7 @@ type Options = Readonly<{
  */
 type Parameters = Readonly<{
   /** Optional configuration options for the application. */
-  options: Partial<Options>
+  options?: Partial<Options>
 }>
 
 class App {
@@ -39,7 +39,7 @@ class App {
    * Creates a new instance of the application.
    * @param options - Optional configuration for the application.
    */
-  constructor({ options }: Parameters = { options: {} }) {
+  constructor({ options }: Parameters = {}) {
     this.options = { ...this.defaultOptions, ...options }
     this.domRefs = this.initDomRefs()
 
@@ -52,7 +52,7 @@ class App {
 
   /**
    * Initializes the DOM references for the application.
-   * @throws Error if the app element is not found.
+   * @throws Error - will throw an error if any of the DOM elements are not found.
    * @returns An object containing references to DOM elements.
    */
   private initDomRefs(): DomReferences {

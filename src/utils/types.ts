@@ -1,9 +1,8 @@
-// prettier-ignore
 /**
  * Represents any JSON-serializable value.
  * This type allows for primitive values, arrays, objects, and objects with toJSON methods.
  */
-export type Jsonable = | string | number | boolean | null | undefined | ReadonlyArray<Jsonable> | { readonly [key: string]: Jsonable } | { toJSON(): Jsonable }
+export type Jsonable = string | number | boolean | null | undefined | ReadonlyArray<Jsonable> | { readonly [key: string]: Jsonable } | { toJSON(): Jsonable } // prettier-ignore
 
 /**
  * Options for creating a BaseError instance.

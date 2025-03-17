@@ -1,10 +1,10 @@
 {
-  "name": "banner",
+  "name": "basic-ts-vite-tailwind",
   "version": "1.0.0",
   "main": "index.html",
   "author": "https://twitter.com/Fortel91",
   "license": "ISC",
-  "description": "",
+  "description": "TypeScript project skeleton with Vite, Tailwind CSS, ESLint, and TypeDoc",
   "type": "module",
   "scripts": {
     "vite": "vite",
@@ -41,7 +41,10 @@
   },
   "typedocOptions": {
     "entryPoints": [
-      "src/js/app.ts"
+      "src/main.ts",
+      "src/utils/index.ts",
+      "src/utils/utility.ts",
+      "src/utils/types.ts"
     ],
     "out": "docs",
     "tsconfig": "tsconfig.json",

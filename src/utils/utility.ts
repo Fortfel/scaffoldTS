@@ -1,5 +1,5 @@
 import util from 'util'
-import { BaseErrorOptions, Jsonable } from '@/_utility.types.ts'
+import type { BaseErrorOptions, Jsonable } from '@/utils/types'
 
 /**
  * Creates a debounced function that delays the execution of the provided function
@@ -56,9 +56,9 @@ export function debounce<TParams extends (...args: Array<unknown>) => void>(
  *
  * @example
  * ```typescript
- * const className = 'bg-blue-500';
- * const result = tw`text-white ${className}`;
- * console.log(result); // Output: 'text-white bg-blue-500'
+ * const className = 'bg-blue-500'
+ * const result = tw`text-white ${className}`
+ * console.log(result) // Output: 'text-white bg-blue-500'
  * ```
  */
 export function tw(strings: ReadonlyArray<string> | ArrayLike<string>, ...values: Array<unknown>): string {
