@@ -1,5 +1,51 @@
 import util from 'util'
-import type { BaseErrorOptions, Jsonable } from '@/utils/types'
+import type { BaseErrorOptions, Jsonable, FetchWithTimeoutOptions } from '@/utils/types'
+
+/**
+ * Fetches data from URL with timeout functionality.
+ *
+ * @param url - The URL to fetch from
+ * @param options - Fetch options
+ * @param timeout - Optional timeout in milliseconds. Defaults to 5 seconds.
+ * @param responseHandler - Optional function to handle the response. Defaults to JSON parsing.
+ * @returns Promise resolving to the API response
+ * @throws Error if request times out or fails
+ */
+export async function fetchWithTimeout<TApiResponse>(
+  url: string,
+  {
+    options,
+    timeout = 5000,
+    responseHandler = async (res): Promise<TApiResponse> => (await res.json()) as TApiResponse,
+  }: FetchWithTimeoutOptions<TApiResponse>,
+): Promise<TApiResponse> {
+  const controller = new AbortController()
+  const actualTimeout = timeout > 0 ? timeout : 5000
+
+  const timeoutId = setTimeout(() => {
+    controller.abort()
+  }, actualTimeout)
+
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status.toString()}`)
+    }
+
+    return await responseHandler(response)
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      throw new Error(`Request timed out after ${actualTimeout.toString()}ms`)
+    }
+    throw error
+  } finally {
+    clearTimeout(timeoutId)
+  }
+}
 
 /**
  * Creates a debounced function that delays the execution of the provided function

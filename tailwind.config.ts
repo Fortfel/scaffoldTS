@@ -1,10 +1,7 @@
 import type { Config } from 'tailwindcss'
 
-import defaultTheme from 'tailwindcss/defaultTheme'
-import { consoleLogNode } from './src/_utility'
-
 export default {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/**/*.{js,ts,jsx,tsx}', './index.html'],
   plugins: [
     //TODO[fortf] Removing background during autocomplete for inputs etc
     // https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete
@@ -18,12 +15,5 @@ export default {
       // strategy: 'class', // only generate classes
     }),
     // https://github.com/jamiebuilds/tailwindcss-animate/tree/main
-    // require('./plugins/bg-stripes')({
-    //   // Optional configuration
-    //   size: '7.07px',
-    //   angle: '135deg',
-    //   opacity: 50,
-    //   bgOpacity: 10,
-    // }),
   ],
 } satisfies Config

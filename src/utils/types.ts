@@ -1,4 +1,16 @@
 /**
+ * Options for the fetchWithTimeout method.
+ */
+export type FetchWithTimeoutOptions<TApiResponse> = Readonly<{
+  /** Fetch API request options */
+  options: RequestInit
+  /** Timeout duration in milliseconds */
+  timeout?: number
+  /** Response type handler */
+  responseHandler?: (response: Response) => Promise<TApiResponse>
+}>
+
+/**
  * Represents any JSON-serializable value.
  * This type allows for primitive values, arrays, objects, and objects with toJSON methods.
  */

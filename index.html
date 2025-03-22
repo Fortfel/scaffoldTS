@@ -1,13 +1,65 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
     <link rel="icon" type="image/png" href="https://www.google.com/s2/favicons?domain=www.fortfel.com" />
   </head>
-  <body class="m-0 flex min-h-screen justify-center bg-slate-900 text-slate-400 antialiased">
-    <div id="app"></div>
+  <body class="m-0 bg-slate-900 text-slate-400 antialiased">
+    <div id="app">
+      <!-- Navigation -->
+      <header class="fixed inset-x-0 top-0 z-10 flex h-16 items-center justify-start px-6">
+        <nav id="nav" class="flex flex-wrap items-center gap-4 text-base">
+          <a href="#home">Home</a>
+          <a href="#home">About</a>
+          <a href="#home">Projects</a>
+          <a href="#home">Contact</a>
+        </nav>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex min-h-dvh flex-col pt-16">
+        <div
+          class="grid flex-1 grid-cols-[1fr_var(--gutter-width)_minmax(0,var(--breakpoint-2xl))_var(--gutter-width)_1fr] grid-rows-[1fr_auto] overflow-clip [--gutter-width:--spacing(6)] lg:[--gutter-width:--spacing(10)]"
+        >
+          <div
+            class="bg-stripes-gray-950/5 col-start-2 row-span-full row-start-1 border-x border-x-gray-950/5 bg-[size:10px_10px] bg-fixed max-sm:hidden"
+          ></div>
+          <div
+            class="bg-stripes-gray-950/5 bg-stripes-angle-45 col-start-4 row-span-full row-start-1 border-x border-x-gray-950/5 bg-[size:10px_10px] bg-fixed max-sm:hidden"
+          ></div>
+          <div class="col-start-3 row-start-1 max-sm:col-span-full max-sm:col-start-1">
+            <!-- Home -->
+            <section id="home" class="flex flex-col items-center justify-center gap-6 px-4 sm:px-6">
+              <h1>Custom Title Here</h1>
+            </section>
+
+            <!-- About -->
+            <section id="about" class="flex flex-col items-center justify-center gap-6 px-4 sm:px-6">
+              <h1>Undraw Illustrations</h1>
+            </section>
+
+            <!-- Projects -->
+            <section id="projects" class="flex flex-col items-center justify-center gap-6 px-4 sm:px-6">
+              <h1>Buttons</h1>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact" class="flex flex-col items-center justify-center gap-6 px-4 sm:px-6">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, ullam.
+            </section>
+          </div>
+
+          <!-- Footer -->
+          <footer class="line-y col-start-3 row-start-2 mb-10 py-6 max-sm:col-span-full max-sm:col-start-1">
+            <div class="px-4 sm:px-6">
+              footer Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, perferendis.
+            </div>
+          </footer>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/src/main.ts" defer></script>
   </body>
 </html>

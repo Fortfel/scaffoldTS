@@ -44,10 +44,6 @@ class App {
     this.domRefs = this.initDomRefs()
 
     this.initialize()
-    const div = document.createElement('div')
-    div.className = 'bg-stripes-fuchsia-500 font-sans'
-    div.innerText = 'KEK'
-    this.domRefs.app.appendChild(div)
   }
 
   /**
