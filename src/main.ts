@@ -1,8 +1,6 @@
 import '@/style/tailwind.css'
 import { throwIfNull } from '@/utils'
 
-//TODO[fortf] README
-
 /**
  * Represents references to DOM elements used in the application.
  */
@@ -27,8 +25,6 @@ type Parameters = Readonly<{
 }>
 
 class App {
-  //TODO[fortf] use WeakMap for eventlisteners?
-  //TODO[fortf] add compose and pipe to utilities / usage with arr.reduce
   public readonly domRefs: DomReferences
   private readonly options: Options
   private readonly defaultOptions = {

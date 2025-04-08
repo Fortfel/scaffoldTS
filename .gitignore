@@ -270,3 +270,6 @@ sketch
 
 ### typedoc ###
 docs
+
+### gitguardian ###
+.cache_ggshield

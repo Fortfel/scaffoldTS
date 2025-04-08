@@ -6,7 +6,6 @@
 @import 'tailwindcss/utilities.css' layer(utilities);
 
 /* Custom plugins */
-@import "./plugins/text-shadow.css";
 @import "./plugins/bg-stripes.css";
 @import "./plugins/horizontal-line.css";
 
